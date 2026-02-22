@@ -1,45 +1,40 @@
-# 🧠 OpenCLAW Monitor
+# OpenCLAW Monitor
 
-**OpenCLAW Monitor** is a sleek, ultra-fast, native Windows desktop application designed to bridge the gap between Windows and the OpenCLAW autonomous AI workspace residing inside the WSL (Windows Subsystem for Linux) Ubuntu environment.
+OpenCLAW Monitor is a native Windows desktop application designed to bridge the gap between Windows and the OpenCLAW autonomous AI workspace residing inside the WSL (Windows Subsystem for Linux) Ubuntu environment.
 
-Built with **Rust (Tauri)**, **React**, **TypeScript**, **Framer Motion**, and **TailwindCSS**, OpenCLAW Monitor provides an intuitive, high-performance UI tailored to cleanly present, edit, and visualize your AI's internal state, memory, heartbeat, and local files directly on your Windows desktop. 
+Built with Rust (Tauri), React, TypeScript, Framer Motion, and TailwindCSS, OpenCLAW Monitor provides an intuitive, high-performance interface to cleanly present, edit, and visualize your AI's internal state, memory, heartbeat, and local files directly on your Windows desktop. 
 
----
+![Tasks View](assets/tasks_screenshot.png)
 
-## ✨ Features
+## Features
 
-- **🚀 Native Desktop Performance:** Runs effortlessly with extreme speed, low memory footprint, and system-level file access via Tauri.
-- **🖼️ Beautiful, Interactive UI:** Designed with rich, glassmorphic styling, smooth micro-animations (Framer Motion), and glowing accents for a premium user experience.
-- **🧩 Task Management Pane:** Instantly view tasks generated or modified by your AI agent, organized elegantly.
-- **⏱️ Time Logging:** Monitor the time-log cycles and heartbeats of the OpenCLAW daemon autonomously executing within WSL. 
-- **👻 Agent State ("Soul" Viewer):** Intelligently monitors the core operational and personality states (`SOUL.md`, `MEMORY.md`, `IDENTITY.md`) for deep insights.
-- **📂 Workspace File Explorer:** Fully-functional integrated file manager for traversing the inner paths of OpenCLAW's workspace environment.
-  - Explore, Read, Edit, and Save files bi-directionally.
-  - Integrated Markdown renderer (Preview) mirroring standard modern IDEs.
-  - Native **PDF Export** and **Excel Spreadsheet exports** generated natively inside the browser frontend. 
+* **Native Desktop Performance:** Runs effortlessly with extreme speed, low memory footprint, and system-level file access via Tauri.
+* **Beautiful, Interactive UI:** Designed with rich, glassmorphic styling, smooth micro-animations (Framer Motion), and glowing accents for a premium user experience.
+* **Task Management Pane:** Instantly view tasks generated or modified by your AI agent, organized elegantly.
+* **Time Logging:** Monitor the time-log cycles and heartbeats of the OpenCLAW daemon autonomously executing within WSL. 
+* **Agent State Viewer:** Intelligently monitors the core operational and personality states (`SOUL.md`, `MEMORY.md`, `IDENTITY.md`) for deep insights.
+* **Workspace File Explorer:** Fully-functional integrated file manager for traversing the inner paths of OpenCLAW's workspace environment.
+  * Explore, Read, Edit, and Save files bi-directionally.
+  * Integrated Markdown renderer matching standard modern development environments.
+  * Support for PDF and Excel Spreadsheet exports generated natively inside the browser frontend. 
 
-## 🛠️ Tech Stack
+![Workspace Files View](assets/files_screenshot.png)
 
-- **Framework:** [Tauri](https://tauri.app/)
-- **Frontend Stack:** [React](https://react.dev/), [TypeScript](https://www.typescriptlang.org/), [Vite](https://vitejs.dev/)
-- **Styling & Animations:** [Tailwind CSS v4](https://tailwindcss.com/), [Framer Motion](https://www.framer.com/motion/)
-- **Icons:** [Lucide-React](https://lucide.dev/)
-- **Utilities:** `react-markdown`, `html2pdf.js`, `xlsx`
+## OpenCLAW Workspace Schema and Configuration
 
----
+For OpenCLAW Monitor to visualize your agent's state properly, your OpenCLAW agent (usually running inside WSL) needs to format its core tracking files using a specific markdown and CSV structure. 
 
-## 📐 OpenCLAW Workspace Schema & Configuration
+### Quick Setup
 
-For OpenCLAW Monitor to visualize your agent's state perfectly, your OpenCLAW agent (usually running inside WSL) needs to format its core tracking files using a specific markdown and CSV structure. 
+If you want to automatically configure your OpenCLAW environment to adopt this schema, use the official setup plugin. Simply direct your CLI-based AI (like Claude Code) to run the plugin:
 
-### Quick Setup (Recommended)
-If you want to automatically configure your OpenCLAW environment to adopt this schema, use the official setup plugin. Simply direct your CLI-based AI (like [Claude Code](https://docs.anthropic.com/en/docs/agents-and-tools/claude-code/overview)) to run the plugin:
 ```bash
 # Example prompt for your AI explicitly telling it to adopt the Monitor schema:
-"Please clone https://github.com/ClariSortAi/openclaw-manager-plugin.git and run its setup instructions to configure my workspace so it's compatible with OpenCLAW Monitor."
+"Please clone https://github.com/ClariSortAi/openclaw-manager-plugin.git and run its setup instructions to configure my workspace so it is compatible with OpenCLAW Monitor."
 ```
 
 ### Manual Schema Rules
+
 If you prefer to configure your prompt schemas manually, instruct your agent to emit the following exact formats into its workspace directory:
 
 #### 1. Task Tracking (`TODO.md`)
@@ -61,20 +56,26 @@ Date,Project,Start,End,Duration (Mins),Duration (Hrs),Overlaps,Notes
 ```
 
 #### 3. Agent Core State Files
-The `Agent State` tab continuously monitors the primary persistent files the AI uses to define its working memory. OpenCLAW Monitor natively renders the following files if they exist in the root workspace directory map:
-- `SOUL.md`: Identity, instructions, and overarching goals.
-- `MEMORY.md`: Long-term memory context or project decisions.
-- `IDENTITY.md` or `HEARTBEAT.md`: Rolling states and system heartbeats.
+The Agent State tab continuously monitors the primary persistent files the AI uses to define its working memory. OpenCLAW Monitor natively renders the following files if they exist in the root workspace directory map:
+* `SOUL.md`: Identity, instructions, and overarching goals.
+* `MEMORY.md`: Long-term memory context or project decisions.
+* `IDENTITY.md` or `HEARTBEAT.md`: Rolling states and system heartbeats.
 
----
+## Tech Stack
 
-## 🚀 Getting Started
+* **Framework:** Tauri
+* **Frontend Stack:** React, TypeScript, Vite
+* **Styling and Animations:** Tailwind CSS v4, Framer Motion
+* **Icons:** Lucide-React
+* **Utilities:** react-markdown, html2pdf.js, xlsx
 
-To run or build the project locally, ensure you have **Node.js**, **npm**, and **Rust Toolkit** installed. By default, it targets the WSL default Ubuntu environment footprint for OpenCLAW (`\\wsl.localhost\Ubuntu\home\your-user\.openclaw`).
+## Getting Started
+
+To run or build the project locally, ensure you have Node.js, npm, and the Rust Toolkit installed. By default, it targets the WSL default Ubuntu environment footprint for OpenCLAW (`\\wsl.localhost\Ubuntu\home\your-user\.openclaw`).
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/jason/openclaw-monitor.git
+   git clone https://github.com/ClariSortAi/openclaw-monitor.git
    cd openclaw-monitor
    ```
 
@@ -92,8 +93,8 @@ To run or build the project locally, ensure you have **Node.js**, **npm**, and *
    ```bash
    npm run tauri build
    ```
-   *Note: On Windows, your bundled NSIS and MSI setup files will be output to `src-tauri/target/release/bundle/nsis/`.*
+   Note: On Windows, your bundled NSIS and MSI setup files will be output to `src-tauri/target/release/bundle/nsis/`.
 
-## 📜 License
+## License
 
-This project is open-sourced software licensed under the **MIT License**.
+This project is open-sourced software licensed under the MIT License.
