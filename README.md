@@ -23,13 +23,17 @@ Built with Tauri and React, the monitor provides a persistent, native interface 
 
 For OpenCLAW Monitor to correctly parse and visualize your agent's state, the agent (running inside WSL) needs to format its core tracking files using a specific markdown and CSV structure. 
 
-### Quick Setup
+### Quick Setup via OpenCLAW Manager Plugin
 
-To configure your OpenCLAW environment to adopt this schema automatically, you can use the setup plugin. Direct your CLI-based AI (like Claude Code) to run it:
+To easily configure your environment without manually explaining schemas, you can drastically simplify the setup by using the **OpenCLAW Manager Plugin**.
+
+This works as a democratization layer: it is an installable tool that grants an AI CLI (specifically [Claude Code](https://docs.anthropic.com/en/docs/agents-and-tools/claude-code/overview)) the explicit expertise to set up, update, secure, and manage OpenCLAW environments autonomously.
+
+By pointing Claude Code to the manager plugin, it will adopt the necessary architectural knowledge to build your `.md` and `.csv` tracking structures automatically:
 
 ```bash
-# Example prompt for your AI explicitly telling it to adopt the Monitor schema:
-"Please clone https://github.com/ClariSortAi/openclaw-manager-plugin.git and run its setup instructions to configure my workspace to be compatible with OpenCLAW Monitor."
+# In your terminal, ask Claude Code to run the setup using the plugin:
+claude "Please use the tools at https://github.com/ClariSortAi/openclaw-manager-plugin.git to configure my OpenCLAW workspace so it is completely compatible with the OpenCLAW Monitor schema."
 ```
 
 ### Manual Schema Rules
